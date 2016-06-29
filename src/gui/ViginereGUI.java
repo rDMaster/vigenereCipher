@@ -84,11 +84,17 @@ public class ViginereGUI extends javax.swing.JFrame {
         });
 
         jTextArea1.setColumns(20);
+        jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
+        jTextArea1.setWrapStyleWord(true);
+        jTextArea1.setMaximumSize(new java.awt.Dimension(220, 80));
         jScrollPane1.setViewportView(jTextArea1);
 
         jTextArea2.setColumns(20);
+        jTextArea2.setLineWrap(true);
         jTextArea2.setRows(5);
+        jTextArea2.setWrapStyleWord(true);
+        jTextArea2.setMaximumSize(new java.awt.Dimension(220, 80));
         jScrollPane2.setViewportView(jTextArea2);
 
         jLabel2.setText("Plaintext:");

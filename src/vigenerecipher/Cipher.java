@@ -55,16 +55,16 @@ public class Cipher {
     String encrypt()
     {
         int length = plainText.length();
-        longKey = longKey.toUpperCase();
-        plainText = plainText.toUpperCase();
+        //longKey = longKey.toUpperCase();
+        //plainText = plainText.toUpperCase();
         
         for(int i = 0; i < length; i++)
         {
             char current = plainText.charAt(i);
             char offset = longKey.charAt(i);
-            int shift = offset - 'A';
-            if(current < 'A' && current > 'Z') 
-                continue;
+            int shift = offset - 1;
+            //if(current < 'A' && current > 'Z') 
+               // continue;
             
             encryptedText.append((char) ((current - 1 + shift) % 253 + 1));
         }
@@ -80,7 +80,7 @@ public class Cipher {
         {
             char current = encryptedText.charAt(i);
             char offset = longKey.charAt(i);
-            int shift = offset - 'A';
+            int shift = offset - 1;
             
             decrypt.append((char) ((current - offset + 253) % 253 + 1));
         }
