@@ -9,13 +9,18 @@ package gui;
  *
  * @author ryan
  */
+
+import vigenerecipher.*;
+
 public class ViginereGUI extends javax.swing.JFrame {
 
+    private CipherCoord cipherCoord ;
     /**
      * Creates new form ViginereGUI
      */
     public ViginereGUI() {
         initComponents();
+        cipherCoord = new CipherCoord("", "");
     }
 
     /**
@@ -61,8 +66,22 @@ public class ViginereGUI extends javax.swing.JFrame {
         jLabel1.setText("keyphrase: ");
 
         jButton1.setText("encyrpt");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         jButton2.setText("decrypt");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                jButton2MouseClicked(evt);
+            }
+        });
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -72,9 +91,9 @@ public class ViginereGUI extends javax.swing.JFrame {
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
 
-        jLabel2.setText("Encrypted Text:");
+        jLabel2.setText("Plaintext:");
 
-        jLabel3.setText("Decrypted Text:");
+        jLabel3.setText("Encrypted Text:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -118,6 +137,30 @@ public class ViginereGUI extends javax.swing.JFrame {
 
         setBounds(0, 0, 651, 577);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jButton1MouseClicked
+    {//GEN-HEADEREND:event_jButton1MouseClicked
+       
+       try
+       {
+           cipherCoord = new CipherCoord(keyphraseBox.getText(), jTextArea2.getText());
+       }catch(Exception e)
+       {
+           System.out.print(e);
+       }
+        
+        jTextArea1.setText(cipherCoord.encrypt());
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jButton2MouseClicked
+    {//GEN-HEADEREND:event_jButton2MouseClicked
+        
+        cipherCoord.setEncryptedText(jTextArea1.getText());
+        cipherCoord.setKey(keyphraseBox.getText());
+        
+        jTextArea2.setText(cipherCoord.decrypt());
+        
+    }//GEN-LAST:event_jButton2MouseClicked
 
     /**
      * @param args the command line arguments

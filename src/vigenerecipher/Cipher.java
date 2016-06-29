@@ -9,13 +9,17 @@ package vigenerecipher;
  *
  * @author ryan
  */
+
+
+
 public class Cipher {
 
-    private final String key;
-    private final StringBuilder buildKey;
-    private final String plainText;
-    private final String longKey;
-    private final Encrypter encrypter;
+    private String key;
+    private StringBuilder buildKey;
+    private String plainText;
+    private String longKey;
+    private StringBuilder encryptedText;
+    
     
     /**
      * this constructor builds the repeated key for the text to be encrypted
@@ -29,7 +33,7 @@ public class Cipher {
         this.plainText = plainText;
         
         
-        buildKey = new StringBuilder(plainText.length() + key.length() - 1);
+        buildKey = new StringBuilder(plainText.length() + key.length());
         while(buildKey.length() < plainText.length())
         {
             buildKey.append(key);
@@ -37,16 +41,67 @@ public class Cipher {
         buildKey.setLength(plainText.length());
         
         longKey = buildKey.toString();
+        encryptedText = new StringBuilder(plainText.length() );
         
-        encrypter = new Encrypter();
+        
     }
     
     /**
-     * calls the encrypted method encrypt
-     * @return 
+     * 
+     * @param longKey
+     * @param plainText
+     * @return encrypted text
      */
     String encrypt()
     {
-        return this.encrypter.encrypt(longKey, plainText);
+        int length = plainText.length();
+        longKey = longKey.toUpperCase();
+        plainText = plainText.toUpperCase();
+        
+        for(int i = 0; i < length; i++)
+        {
+            char current = plainText.charAt(i);
+            char offset = longKey.charAt(i);
+            int shift = offset - 'A';
+            if(current < 'A' && current > 'Z') 
+                continue;
+            
+            encryptedText.append((char) ((current - 1 + shift) % 253 + 1));
+        }
+        System.out.println(longKey);
+        return encryptedText.toString();
     }
+    
+    String decrypt()
+    {
+        StringBuilder decrypt = new StringBuilder(encryptedText.length());
+        
+        for(int i = 0; i < encryptedText.length(); i++)
+        {
+            char current = encryptedText.charAt(i);
+            char offset = longKey.charAt(i);
+            int shift = offset - 'A';
+            
+            decrypt.append((char) ((current - offset + 253) % 253 + 1));
+        }
+       return decrypt.toString(); 
+    }
+    
+    void setKey(String newKey)
+    {
+        this.key = newKey;
+    }
+    
+     void setPlainText(String newText)
+    {
+        this.plainText = newText;
+    }
+     
+    void setEncryptedText(String newText)
+    {
+        this.encryptedText = new StringBuilder(newText.length());
+        this.encryptedText.append(newText);
+    }
+    
+   
 }

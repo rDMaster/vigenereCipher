@@ -5,20 +5,67 @@
  */
 package vigenerecipher;
 
+import java.io.Serializable;
+
 /**
  *
  * @author ryan
  */
-public class CipherCoord {
+public class CipherCoord implements Serializable{
     
+    
+    private Cipher cipher;
+    
+    
+    public CipherCoord(String key, String plaintext)
+    {
+        cipher = new Cipher(key , plaintext);
+    }
     /**
-     * @param args the command line arguments
-     */
+     * 
+     *
     public static void main(String[] args) {
         // TODO code application logic here
-        String testKey =  "hello";
-        String plainText = " hello there My name is larry.";
+        
+        String plainText = "DONTWORRYBEHAPPY";
+        String testKey =  "CHECKIO";
+        String result;
         
         Cipher cipher = new Cipher(testKey, plainText);
+        
+        result = cipher.encrypt();
+        
+        System.out.println(result);
+        
+        result = cipher.decrypt();
+        
+        System.out.println(result);
+    }*/
+    
+    public String encrypt()
+    {
+        return cipher.encrypt();
+        
+    }
+    
+    public String decrypt()
+    {
+        return cipher.decrypt();
+    }
+    
+    public void setKey(String newKey)
+    {
+        cipher.setKey(newKey);
+    }
+    
+    public void setPlainText(String newText)
+    {
+        cipher.setPlainText(newText);
+    }
+    
+     public void setEncryptedText(String newText)
+    {
+        cipher.setEncryptedText(newText);
+        
     }
 }
