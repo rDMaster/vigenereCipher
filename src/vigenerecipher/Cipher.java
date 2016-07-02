@@ -1,7 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * The cipher class takes the key and plain text as arguments
+ * and can then be used to return an encrypted string via the encrypt method
+ * This cipher currently uses values 1 - 254 of the ASCii table. 
+ * I may edit in the future to give the user an option of the range used.
+ * 
  */
 package vigenerecipher;
 
@@ -47,7 +49,9 @@ public class Cipher {
     }
     
     /**
-     * 
+     *  /**
+     * Returns a encrypted String encryptedText 
+     * @return String encrypted Text
      * @param longKey
      * @param plainText
      * @return encrypted text
@@ -72,6 +76,10 @@ public class Cipher {
         return encryptedText.toString();
     }
     
+    /**
+     * Returns a decrypted String from the String encryptedText 
+     * @return String decrypted Text
+     */
     String decrypt()
     {
         StringBuilder decrypt = new StringBuilder(encryptedText.length());
@@ -87,16 +95,33 @@ public class Cipher {
        return decrypt.toString(); 
     }
     
+    
+    /**
+     * Sets the value of the key to the argument 
+     * String
+     * @param newKey 
+     */
     void setKey(String newKey)
     {
         this.key = newKey;
     }
     
+    /**
+     * Sets the value of plainText to the argument
+     * String
+     *
+     * @param newText 
+     */
      void setPlainText(String newText)
     {
         this.plainText = newText;
     }
      
+     /**
+      * Sets the value of encryptedText to the argument
+      * String 
+      * @param newText 
+      */
     void setEncryptedText(String newText)
     {
         this.encryptedText = new StringBuilder(newText.length());

@@ -1,7 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * This is the coordinating class for Cipher.
+ * All of its methods are public.
  */
 package vigenerecipher;
 
@@ -42,27 +41,47 @@ public class CipherCoord implements Serializable{
         System.out.println(result);
     }*/
     
+    /**
+     * 
+     * @return 
+     */
     public String encrypt()
     {
         return cipher.encrypt();
         
     }
     
+    /**
+     * 
+     * @return 
+     */
     public String decrypt()
     {
         return cipher.decrypt();
     }
     
+    /**
+     * 
+     * @param newKey 
+     */
     public void setKey(String newKey)
     {
         cipher.setKey(newKey);
     }
     
+    /**
+     * 
+     * @param newText 
+     */
     public void setPlainText(String newText)
     {
         cipher.setPlainText(newText);
     }
     
+    /**
+     * 
+     * @param newText 
+     */
      public void setEncryptedText(String newText)
     {
         cipher.setEncryptedText(newText);
