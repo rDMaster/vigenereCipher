@@ -13,36 +13,21 @@ import java.io.Serializable;
 public class CipherCoord implements Serializable{
     
     
-    private Cipher cipher;
+    private ViginereCipher cipher;
     
-    
+    /**
+     * 
+     * @param key
+     * @param plaintext 
+     */
     public CipherCoord(String key, String plaintext)
     {
-        cipher = new Cipher(key , plaintext);
+        cipher = new ViginereCipher(key , plaintext);
     }
-    /**
-     * 
-     *
-    public static void main(String[] args) {
-        // TODO code application logic here
-        
-        String plainText = "DONTWORRYBEHAPPY";
-        String testKey =  "CHECKIO";
-        String result;
-        
-        Cipher cipher = new Cipher(testKey, plainText);
-        
-        result = cipher.encrypt();
-        
-        System.out.println(result);
-        
-        result = cipher.decrypt();
-        
-        System.out.println(result);
-    }*/
+    
     
     /**
-     * 
+     * Returns a encrypted String encryptedText 
      * @return 
      */
     public String encrypt()
@@ -52,8 +37,8 @@ public class CipherCoord implements Serializable{
     }
     
     /**
-     * 
-     * @return 
+     * Returns a decrypted String from the String encryptedText 
+     * @return encryptedText String
      */
     public String decrypt()
     {
@@ -61,7 +46,7 @@ public class CipherCoord implements Serializable{
     }
     
     /**
-     * 
+     * Sets the value of the key to the argument 
      * @param newKey 
      */
     public void setKey(String newKey)
@@ -70,7 +55,7 @@ public class CipherCoord implements Serializable{
     }
     
     /**
-     * 
+     * Sets the value of plainText to the argument
      * @param newText 
      */
     public void setPlainText(String newText)
@@ -79,7 +64,7 @@ public class CipherCoord implements Serializable{
     }
     
     /**
-     * 
+     * Sets the value of encryptedText to the argument
      * @param newText 
      */
      public void setEncryptedText(String newText)

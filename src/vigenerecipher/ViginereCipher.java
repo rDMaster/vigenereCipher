@@ -14,7 +14,7 @@ package vigenerecipher;
 
 
 
-public class Cipher {
+public class ViginereCipher {
 
     private String key;
     private StringBuilder buildKey;
@@ -29,7 +29,7 @@ public class Cipher {
      * @param key
      * @param plainText 
      */
-    public Cipher(String key, String plainText)
+    public ViginereCipher(String key, String plainText)
     {
         this.key = key;
         this.plainText = plainText;
