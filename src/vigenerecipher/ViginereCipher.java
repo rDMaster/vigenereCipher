@@ -1,10 +1,4 @@
-/**
- * The cipher class takes the key and plain text as arguments
- * and can then be used to return an encrypted string via the encrypt method
- * This cipher currently uses values 1 - 254 of the ASCii table. 
- * I may edit in the future to give the user an option of the range used.
- * 
- */
+
 package vigenerecipher;
 
 /**
