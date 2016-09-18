@@ -95,10 +95,7 @@ public class ViginereCipher {
      * String
      * @param newKey 
      */
-    void setKey(String newKey)
-    {
-        this.key = newKey;
-    }
+    void setKey(String newKey) {this.key = newKey;}
     
     /**
      * Sets the value of plainText to the argument
@@ -106,10 +103,7 @@ public class ViginereCipher {
      *
      * @param newText 
      */
-     void setPlainText(String newText)
-    {
-        this.plainText = newText;
-    }
+     void setPlainText(String newText) {this.plainText = newText;}
      
      /**
       * Sets the value of encryptedText to the argument
